@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import uuid from 'react-native-uuid';
 import WalkListItem from '../components/WalkListItem';
 
 function WalkListsScreen({navigation}) {
-  const [walks, setWalks] = useState([
+  const [walks] = useState([
     {
       id: uuid.v4(),
       date: '2021-01-01',

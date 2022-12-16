@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-function BirdListScreen({route, navigation}) {
+function BirdListScreen({route}) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{route.params.item.location}</Text>
