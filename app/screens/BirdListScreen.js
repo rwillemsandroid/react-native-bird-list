@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const BirdListScreen = () => {
+function BirdListScreen({route, navigation}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>BirdListScreen</Text>
+      <Text style={styles.label}>{route.params.item.location}</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
