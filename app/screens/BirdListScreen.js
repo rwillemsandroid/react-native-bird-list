@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {Button, FlatList, StyleSheet, View} from 'react-native';
 import uuid from 'react-native-uuid';
 import BirdListItem from '../components/BirdListItem';
 
-function BirdListScreen() {
+function BirdListScreen({navigation, route}) {
   const [birds] = useState([
     {
       id: uuid.v4(),
@@ -26,6 +26,20 @@ function BirdListScreen() {
   const onPressBirdItem = item => {
     console.log('onPressBirdItem', item);
   };
+
+  React.useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Button
+          onPress={() => alert('This is a button!')}
+          title="Add"
+          color="#fff"
+        />
+      ),
+      headerBackTitle: '',
+      title: route.params.item.location,
+    });
+  }, [navigation, route]);
 
   return (
     <View style={styles.container}>
