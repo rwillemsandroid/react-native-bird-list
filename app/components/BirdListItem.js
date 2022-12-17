@@ -1,14 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const WalkListItem = ({walk, onWalkPressed}) => {
+const BirdListItem = ({bird, onBirdPressed}) => {
   return (
     <TouchableOpacity
       style={styles.listItem}
-      onPress={() => onWalkPressed(walk)}>
+      onPress={() => onBirdPressed(bird)}>
       <View style={styles.listItemView}>
-        <Text style={styles.locationText}>{walk.location}</Text>
-        <Text style={styles.dateText}>{walk.date}</Text>
+        <Text style={styles.speciesText}>{bird.species}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -25,13 +24,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  locationText: {
+  speciesText: {
     fontSize: 18,
-  },
-  dateText: {
-    fontSize: 14,
-    fontStyle: 'italic',
   },
 });
 
-export default WalkListItem;
+export default BirdListItem;

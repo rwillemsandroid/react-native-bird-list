@@ -13,7 +13,7 @@ function WalkListsScreen({navigation}) {
     {
       id: uuid.v4(),
       date: '2021-01-02',
-      location: 'Groothoutebos',
+      location: 'Groothoutenbos',
     },
     {
       id: uuid.v4(),

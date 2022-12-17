@@ -1,17 +1,47 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
+import uuid from 'react-native-uuid';
+import BirdListItem from '../components/BirdListItem';
 
-function BirdListScreen({route}) {
+function BirdListScreen() {
+  const [birds] = useState([
+    {
+      id: uuid.v4(),
+      species: 'Roodborstje',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Merel',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Koolmees',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Groene specht',
+    },
+  ]);
+
+  const onPressBirdItem = item => {
+    console.log('onPressBirdItem', item);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{route.params.item.location}</Text>
+      <FlatList
+        data={birds}
+        renderItem={({item}) => (
+          <BirdListItem bird={item} onBirdPressed={onPressBirdItem} />
+        )}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: 'stretch',
     flex: 1,
   },
   label: {
