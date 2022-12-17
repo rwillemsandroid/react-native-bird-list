@@ -1,4 +1,4 @@
-import {ADD_BIRD_SPOTTING} from '../constants';
+import {ADD_BIRD_SPOTTING, REMOVE_BIRD_SPOTTING} from '../constants';
 import uuid from 'react-native-uuid';
 
 const initialState = {
@@ -28,6 +28,13 @@ const birdSpotReducer = (state = initialState, action) => {
       return {
         ...state,
         birdsList: [...state.birdsList, action.payload],
+      };
+    case REMOVE_BIRD_SPOTTING:
+      return {
+        ...state,
+        birdsList: state.birdsList.filter(
+          bird => bird.id !== action.payload.id,
+        ),
       };
     default:
       return state;

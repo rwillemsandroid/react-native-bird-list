@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, FlatList, StyleSheet, View} from 'react-native';
 import BirdListItem from '../components/BirdListItem';
 import {useDispatch, useSelector} from 'react-redux';
-import {addBirdSpot} from '../actions/birdspot.actions';
+import {addBirdSpot, removeBirdSpot} from '../actions/birdspot.actions';
 import uuid from 'react-native-uuid';
 
 function BirdListScreen({navigation, route}) {
@@ -23,7 +23,11 @@ function BirdListScreen({navigation, route}) {
   };
 
   const onPressRemoveBird = item => {
-    console.log('removeBird', item);
+    dispatch(
+      removeBirdSpot({
+        id: item.id,
+      }),
+    );
   };
 
   React.useEffect(() => {

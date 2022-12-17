@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const BirdListItem = ({bird, onBirdPressed, onRemoveBirdPressed}) => {
   return (
@@ -8,6 +9,12 @@ const BirdListItem = ({bird, onBirdPressed, onRemoveBirdPressed}) => {
       onPress={() => onBirdPressed(bird)}>
       <View style={styles.listItemView}>
         <Text style={styles.speciesText}>{bird.species}</Text>
+        <Icon
+          name={'minuscircle'}
+          size={20}
+          color={'red'}
+          onPress={() => onRemoveBirdPressed(bird)}
+        />
       </View>
     </TouchableOpacity>
   );
