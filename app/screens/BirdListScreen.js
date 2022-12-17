@@ -1,27 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button, FlatList, StyleSheet, View} from 'react-native';
-import uuid from 'react-native-uuid';
 import BirdListItem from '../components/BirdListItem';
+import {useSelector} from 'react-redux';
 
 function BirdListScreen({navigation, route}) {
-  const [birds] = useState([
-    {
-      id: uuid.v4(),
-      species: 'Roodborstje',
-    },
-    {
-      id: uuid.v4(),
-      species: 'Merel',
-    },
-    {
-      id: uuid.v4(),
-      species: 'Koolmees',
-    },
-    {
-      id: uuid.v4(),
-      species: 'Groene specht',
-    },
-  ]);
+  const store = useSelector(state => state);
 
   const onPressBirdItem = item => {
     console.log('onPressBirdItem', item);
@@ -44,7 +27,7 @@ function BirdListScreen({navigation, route}) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={birds}
+        data={store.birdSpot.birdsList}
         renderItem={({item}) => (
           <BirdListItem bird={item} onBirdPressed={onPressBirdItem} />
         )}
