@@ -1,23 +1,35 @@
 import React from 'react';
 import {Button, FlatList, StyleSheet, View} from 'react-native';
 import BirdListItem from '../components/BirdListItem';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {addBirdSpot} from '../actions/birdspot.actions';
+import uuid from 'react-native-uuid';
 
 function BirdListScreen({navigation, route}) {
   const store = useSelector(state => state);
+  const dispatch = useDispatch();
 
   const onPressBirdItem = item => {
     console.log('onPressBirdItem', item);
   };
 
+  const addBird = () => {
+    dispatch(
+      addBirdSpot({
+        id: uuid.v4(),
+        species: 'Houtduif',
+      }),
+    );
+  };
+
+  const onPressRemoveBird = item => {
+    console.log('removeBird', item);
+  };
+
   React.useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button
-          onPress={() => alert('This is a button!')}
-          title="Add"
-          color="#fff"
-        />
+        <Button onPress={() => addBird()} title="Add" color="#fff" />
       ),
       headerBackTitle: '',
       title: route.params.item.location,
@@ -29,7 +41,11 @@ function BirdListScreen({navigation, route}) {
       <FlatList
         data={store.birdSpot.birdsList}
         renderItem={({item}) => (
-          <BirdListItem bird={item} onBirdPressed={onPressBirdItem} />
+          <BirdListItem
+            bird={item}
+            onBirdPressed={onPressBirdItem}
+            onRemoveBirdPressed={onPressRemoveBird}
+          />
         )}
       />
     </View>

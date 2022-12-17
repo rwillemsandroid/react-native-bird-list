@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const BirdListItem = ({bird, onBirdPressed}) => {
+const BirdListItem = ({bird, onBirdPressed, onRemoveBirdPressed}) => {
   return (
     <TouchableOpacity
       style={styles.listItem}

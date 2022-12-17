@@ -27,7 +27,7 @@ const birdSpotReducer = (state = initialState, action) => {
     case ADD_BIRD_SPOTTING:
       return {
         ...state,
-        birdsList: state.birdsList.add(action.payload),
+        birdsList: [...state.birdsList, action.payload],
       };
     default:
       return state;
