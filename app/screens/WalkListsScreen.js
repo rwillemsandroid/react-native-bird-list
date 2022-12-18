@@ -5,27 +5,12 @@ import WalkListItem from '../components/WalkListItem';
 import {useDispatch, useSelector} from 'react-redux';
 import {addWalk} from '../actions/walks.actions';
 import moment from 'moment';
-import BottomSheet, {
-  BottomSheetBackdrop,
-  BottomSheetTextInput,
-} from '@gorhom/bottom-sheet';
+import AddWalkBottomSheet from '../bottomsheets/AddWalkBottomSheet';
 
 function WalkListsScreen({navigation}) {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
-  const bottomSheetRef = React.useRef();
-  const snapPoints = useMemo(() => ['30%'], []);
-
-  const [newWalkName, onChangeNewWalkName] = React.useState('Wandeling');
-
-  // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
-
-  const closeBottomSheet = useCallback(() => {
-    bottomSheetRef.current?.close();
-  }, [bottomSheetRef]);
+  const bottomSheetRef = React.useRef('addWalkBottomSheet');
 
   const openBottomSheet = useCallback(() => {
     bottomSheetRef.current?.expand();
@@ -35,7 +20,7 @@ function WalkListsScreen({navigation}) {
     navigation.navigate('Bird List', {item});
   };
 
-  const addWalkPressed = () => {
+  const addWalkPressed = newWalkName => {
     if (newWalkName.length > 0) {
       dispatch(
         addWalk({
@@ -44,14 +29,12 @@ function WalkListsScreen({navigation}) {
           momentISOString: moment().toISOString(),
         }),
       );
-      closeBottomSheet();
-      onChangeNewWalkName('');
     }
   };
 
-  const openAddWalkBottomSheet = () => {
+  const openAddWalkBottomSheet = useCallback(() => {
     openBottomSheet();
-  };
+  }, [openBottomSheet]);
 
   React.useEffect(() => {
     navigation.setOptions({
@@ -61,20 +44,6 @@ function WalkListsScreen({navigation}) {
     });
   });
 
-  // renders
-  const renderBackdrop = useCallback(
-    props => (
-      <BottomSheetBackdrop
-        {...props}
-        disappearsOnIndex={-1}
-        appearsOnIndex={0}
-        pressBehavior={'close'}
-        enablePanDownToClose={true}
-      />
-    ),
-    [],
-  );
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -83,29 +52,10 @@ function WalkListsScreen({navigation}) {
           <WalkListItem walk={item} onWalkPressed={onPressWalkItem} />
         )}
       />
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={-1}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-        onChange={handleSheetChanges}>
-        <View style={styles.bottomSheetContainer}>
-          <View style={styles.bottomSheetTitleRow}>
-            <Text style={styles.bottomSheetTitle}>Add a new walk:</Text>
-          </View>
-          <BottomSheetTextInput
-            style={styles.newWalkInput}
-            value={newWalkName}
-            placeholder="Add a name for the new walk."
-            onChangeText={onChangeNewWalkName}
-          />
-          <Button
-            title="Add new walk"
-            onPress={addWalkPressed}
-            disabled={newWalkName.length === 0}
-          />
-        </View>
-      </BottomSheet>
+      <AddWalkBottomSheet
+        bottomSheetRef={bottomSheetRef}
+        onAddWalk={addWalkPressed}
+      />
     </View>
   );
 }
@@ -114,30 +64,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     flex: 1,
-  },
-  bottomSheetContainer: {
-    flex: 1,
-    alignItems: 'stretch',
-    padding: 12,
-  },
-  bottomSheetTitleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  bottomSheetTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  newWalkInput: {
-    marginTop: 8,
-    marginBottom: 10,
-    borderRadius: 10,
-    fontSize: 16,
-    lineHeight: 20,
-    padding: 8,
-    backgroundColor: 'rgba(151, 151, 151, 0.25)',
   },
 });
 
