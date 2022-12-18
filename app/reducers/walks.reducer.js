@@ -5,22 +5,22 @@ const initialState = {
   walks: [
     {
       id: '111-111-111',
-      date: moment('2022-12-01'),
+      momentISOString: moment('2022-12-01').toISOString(),
       location: 'Eksterheide',
     },
     {
       id: '222-222-222',
-      date: moment('2022-12-02'),
+      momentISOString: moment('2022-12-02').toISOString(),
       location: 'Groothoutenbos',
     },
     {
       id: '333-333-333',
-      date: moment('2022-12-03'),
+      momentISOString: moment('2022-12-03').toISOString(),
       location: 'Liereman',
     },
     {
       id: '444-444-444',
-      date: moment('2022-12-04'),
+      momentISOString: moment('2022-12-04').toISOString(),
       location: 'Epelaar',
     },
   ],

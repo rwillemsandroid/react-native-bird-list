@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import moment from 'moment';
 
 const WalkListItem = ({walk, onWalkPressed}) => {
   return (
@@ -8,7 +9,9 @@ const WalkListItem = ({walk, onWalkPressed}) => {
       onPress={() => onWalkPressed(walk)}>
       <View style={styles.listItemView}>
         <Text style={styles.locationText}>{walk.location}</Text>
-        <Text style={styles.dateText}>{walk.date.format('ddd, DD MMM')}</Text>
+        <Text style={styles.dateText}>
+          {moment(walk.momentISOString).format('ddd, DD MMM')}
+        </Text>
       </View>
     </TouchableOpacity>
   );

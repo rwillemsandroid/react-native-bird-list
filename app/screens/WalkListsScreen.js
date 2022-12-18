@@ -18,7 +18,7 @@ function WalkListsScreen({navigation}) {
     dispatch(
       addWalk({
         id: uuid.v4(),
-        date: moment(),
+        momentISOString: moment().toISOString(),
         location: 'visbeekvallei',
       }),
     );
