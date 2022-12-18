@@ -1,7 +1,11 @@
 import {combineReducers, createStore} from 'redux';
-import birdSpotReducer from '../reducers/birdspot.reducer';
+import birdspotsReducer from '../reducers/birdspots.reducer';
+import walksReducer from '../reducers/walks.reducer';
 
-const rootReducer = combineReducers({birdSpot: birdSpotReducer});
+const rootReducer = combineReducers({
+  birdSpots: birdspotsReducer,
+  walks: walksReducer,
+});
 const configureStore = () => {
   return createStore(rootReducer);
 };

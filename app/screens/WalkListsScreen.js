@@ -2,30 +2,11 @@ import React, {useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import uuid from 'react-native-uuid';
 import WalkListItem from '../components/WalkListItem';
+import {useDispatch, useSelector} from 'react-redux';
 
 function WalkListsScreen({navigation}) {
-  const [walks] = useState([
-    {
-      id: uuid.v4(),
-      date: '2021-01-01',
-      location: 'Eksterheide',
-    },
-    {
-      id: uuid.v4(),
-      date: '2021-01-02',
-      location: 'Groothoutenbos',
-    },
-    {
-      id: uuid.v4(),
-      date: '2021-01-03',
-      location: 'Liereman',
-    },
-    {
-      id: uuid.v4(),
-      date: '2021-01-04',
-      location: 'Epelaar',
-    },
-  ]);
+  const store = useSelector(state => state);
+  const dispatch = useDispatch();
 
   const onPressWalkItem = item => {
     navigation.navigate('Bird List', {item});
@@ -34,7 +15,7 @@ function WalkListsScreen({navigation}) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={walks}
+        data={store.walks.walks}
         renderItem={({item}) => (
           <WalkListItem walk={item} onWalkPressed={onPressWalkItem} />
         )}

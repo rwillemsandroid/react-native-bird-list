@@ -43,7 +43,7 @@ function BirdListScreen({navigation, route}) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={store.birdSpot.birdsList}
+        data={store.birdSpots.birdsList}
         renderItem={({item}) => (
           <BirdListItem
             bird={item}

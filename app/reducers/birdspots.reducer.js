@@ -22,7 +22,7 @@ const initialState = {
   ],
 };
 
-const birdSpotReducer = (state = initialState, action) => {
+const birdspotsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BIRD_SPOTTING:
       return {
@@ -40,4 +40,4 @@ const birdSpotReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default birdSpotReducer;
+export default birdspotsReducer;
