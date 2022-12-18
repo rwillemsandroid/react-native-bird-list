@@ -33,7 +33,7 @@ function BirdListScreen({navigation, route}) {
   React.useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button onPress={() => addBird()} title="Add" color="#fff" />
+        <Button onPress={() => addBird()} title="+" color="#fff" />
       ),
       headerBackTitle: '',
       title: route.params.item.location,

@@ -1,5 +1,5 @@
 import {ADD_WALK, REMOVE_WALK} from '../constants';
-import moment from 'moment/moment';
+import moment from 'moment';
 
 const initialState = {
   walks: [
