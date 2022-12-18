@@ -29,14 +29,16 @@ Keep a list of walks that you have been on. You can add a new walk and open exis
 Keep a list of birds that you have seen on a walk. You can add a new bird and remove birds from the list.
 Each walk has a list of birds.
 
-## TODO list
+## TODO
 
-- implement a bottom sheet that allow to enter data.
-- add persistent storage (Realm? SQL? just use asyncStorage for the POC?)
+- add persistent storage (Realm? SQL?)
+
+## Wishlist
+
 - remove a walk (and all the birds on that walk)
-
-## Wish list
-
+- edit walk name
+- edit bird entry
+- expand bird entry to include more details (description, note, number of birds, ...)
 - take/add photo and add it to a birdspot
 - add gps location to bird spot (and show it on a map)
 - autofill bird names based on previous entries
