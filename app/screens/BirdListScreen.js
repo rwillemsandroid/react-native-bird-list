@@ -1,26 +1,34 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {Button, FlatList, StyleSheet, View} from 'react-native';
 import BirdListItem from '../components/BirdListItem';
 import {useDispatch, useSelector} from 'react-redux';
 import {addBirdSpot, removeBirdSpot} from '../actions/birdspot.actions';
 import uuid from 'react-native-uuid';
+import AddBirdBottomSheet from '../bottomsheets/AddBirdBottomSheet';
 
 function BirdListScreen({navigation, route}) {
   const store = useSelector(state => state);
   const dispatch = useDispatch();
+  const bottomSheetRef = React.useRef('addBirdBottomSheet');
+
+  const openBottomSheet = useCallback(() => {
+    bottomSheetRef.current?.expand();
+  }, [bottomSheetRef]);
 
   const onPressBirdItem = item => {
     console.log('onPressBirdItem', item);
   };
 
-  const addBird = () => {
-    dispatch(
-      addBirdSpot({
-        id: uuid.v4(),
-        species: 'Houtduif',
-        walkId: route.params.item.id,
-      }),
-    );
+  const addBird = newBirdName => {
+    if (newBirdName.length > 0) {
+      dispatch(
+        addBirdSpot({
+          id: uuid.v4(),
+          species: newBirdName,
+          walkId: route.params.item.id,
+        }),
+      );
+    }
   };
 
   const onPressRemoveBird = item => {
@@ -34,7 +42,7 @@ function BirdListScreen({navigation, route}) {
   React.useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button onPress={() => addBird()} title="+" color="#fff" />
+        <Button onPress={openBottomSheet} title="+" color="#fff" />
       ),
       headerBackTitle: '',
       title: route.params.item.location,
@@ -59,6 +67,7 @@ function BirdListScreen({navigation, route}) {
           />
         )}
       />
+      <AddBirdBottomSheet bottomSheetRef={bottomSheetRef} onAddBird={addBird} />
     </View>
   );
 }
