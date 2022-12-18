@@ -8,7 +8,7 @@ const WalkListItem = ({walk, onWalkPressed}) => {
       onPress={() => onWalkPressed(walk)}>
       <View style={styles.listItemView}>
         <Text style={styles.locationText}>{walk.location}</Text>
-        <Text style={styles.dateText}>{walk.date}</Text>
+        <Text style={styles.dateText}>{walk.date.format('ddd, DD MMM')}</Text>
       </View>
     </TouchableOpacity>
   );

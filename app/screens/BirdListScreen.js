@@ -38,7 +38,7 @@ function BirdListScreen({navigation, route}) {
       headerBackTitle: '',
       title: route.params.item.location,
     });
-  }, [navigation, route]);
+  });
 
   return (
     <View style={styles.container}>

@@ -1,26 +1,26 @@
 import {ADD_WALK, REMOVE_WALK} from '../constants';
-import uuid from 'react-native-uuid';
+import moment from 'moment/moment';
 
 const initialState = {
   walks: [
     {
       id: '111-111-111',
-      date: '2021-01-01',
+      date: moment('2022-12-01'),
       location: 'Eksterheide',
     },
     {
       id: '222-222-222',
-      date: '2021-01-02',
+      date: moment('2022-12-02'),
       location: 'Groothoutenbos',
     },
     {
       id: '333-333-333',
-      date: '2021-01-03',
+      date: moment('2022-12-03'),
       location: 'Liereman',
     },
     {
       id: '444-444-444',
-      date: '2021-01-04',
+      date: moment('2022-12-04'),
       location: 'Epelaar',
     },
   ],
