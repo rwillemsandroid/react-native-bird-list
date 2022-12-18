@@ -6,18 +6,67 @@ const initialState = {
     {
       id: uuid.v4(),
       species: 'Roodborstje',
+      walkId: '111-111-111',
     },
     {
       id: uuid.v4(),
       species: 'Merel',
+      walkId: '111-111-111',
     },
     {
       id: uuid.v4(),
       species: 'Koolmees',
+      walkId: '111-111-111',
     },
     {
       id: uuid.v4(),
       species: 'Groene specht',
+      walkId: '222-222-222',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Watersnip',
+      walkId: '222-222-222',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Wilde eend',
+      walkId: '222-222-222',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Pimpelmees',
+      walkId: '333-333-333',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Blauwe Reiger',
+      walkId: '333-333-333',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Kraai',
+      walkId: '333-333-333',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Buizerd',
+      walkId: '444-444-444',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Winterkoning',
+      walkId: '444-444-444',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Goudhaan',
+      walkId: '444-444-444',
+    },
+    {
+      id: uuid.v4(),
+      species: 'Grote bonte specht',
+      walkId: '444-444-444',
     },
   ],
 };

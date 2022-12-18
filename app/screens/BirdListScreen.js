@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {Button, FlatList, StyleSheet, View} from 'react-native';
 import BirdListItem from '../components/BirdListItem';
 import {useDispatch, useSelector} from 'react-redux';
@@ -40,10 +40,16 @@ function BirdListScreen({navigation, route}) {
     });
   });
 
+  const birdsForWalk = useMemo(() => {
+    return store.birdSpots.birdsList.filter(
+      bird => bird.walkId === route.params.item.id,
+    );
+  }, [route, store]);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={store.birdSpots.birdsList}
+        data={birdsForWalk}
         renderItem={({item}) => (
           <BirdListItem
             bird={item}
@@ -60,10 +66,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     flex: 1,
-  },
-  label: {
-    fontSize: 40,
-    color: 'red',
   },
 });
 

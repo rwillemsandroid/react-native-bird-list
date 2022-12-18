@@ -27,11 +27,11 @@ Keep a list of walks that you have been on. You can add a new walk and open exis
 ### Bird lists
 
 Keep a list of birds that you have seen on a walk. You can add a new bird and remove birds from the list.
+Each walk has a list of birds.
 
 ## TODO list
 
 - implement a bottom sheet that allow to enter data.
-- filter birds per list
 - add persistent storage (Realm? SQL? just use asyncStorage for the POC?)
 - remove a walk (and all the birds on that walk)
 
@@ -42,3 +42,10 @@ Keep a list of birds that you have seen on a walk. You can add a new bird and re
 - autofill bird names based on previous entries
 - export lists to csv
 - cloud backups 
+- integrate with waarnemeningen.be
+- firebase crash reporting
+- firebase performance monitoring
+- firebase analytics
+- search/filter walks
+- search/filter birds
+- favorite birds/walks
