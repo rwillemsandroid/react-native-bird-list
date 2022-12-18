@@ -6,7 +6,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useCallback, useMemo} from 'react';
 
 function AddBirdBottomSheet({bottomSheetRef, onAddBird}) {
-  const snapPoints = useMemo(() => ['30%'], []);
+  const snapPoints = useMemo(() => ['35%'], []);
   const [newBirdName, onChangeNewBirdName] = React.useState('');
 
   const closeBottomSheet = useCallback(() => {
@@ -48,11 +48,14 @@ function AddBirdBottomSheet({bottomSheetRef, onAddBird}) {
           placeholder="What kind of bird did you see?"
           onChangeText={onChangeNewBirdName}
         />
-        <Button
-          title="Add new bird"
-          onPress={addBirdPressed}
-          disabled={newBirdName.length === 0}
-        />
+        <View style={styles.bottomSheetButtonContainer}>
+          <Button
+            style={styles.bottomSheetButton}
+            title="Add new bird"
+            onPress={addBirdPressed}
+            disabled={newBirdName.length === 0}
+          />
+        </View>
       </View>
     </BottomSheet>
   );
@@ -69,18 +72,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   bottomSheetTitle: {
+    padding: 12,
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
   },
   newWalkInput: {
-    marginTop: 8,
     marginBottom: 10,
     borderRadius: 10,
     fontSize: 16,
     lineHeight: 20,
     padding: 8,
     backgroundColor: 'rgba(151, 151, 151, 0.25)',
+  },
+  bottomSheetButtonContainer: {
+    padding: 8,
   },
 });
 
