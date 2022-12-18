@@ -18,6 +18,7 @@ function BirdListScreen({navigation, route}) {
       addBirdSpot({
         id: uuid.v4(),
         species: 'Houtduif',
+        walkId: route.params.item.id,
       }),
     );
   };
