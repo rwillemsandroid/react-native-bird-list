@@ -34,3 +34,11 @@ Keep a list of birds that you have seen on a walk. You can add a new bird and re
 - filter birds per list
 - add persistent storage (Realm? SQL? just use asyncStorage for the POC?)
 - remove a walk (and all the birds on that walk)
+
+## Wish list
+
+- take/add photo and add it to a birdspot
+- add gps location to bird spot (and show it on a map)
+- autofill bird names based on previous entries
+- export lists to csv
+- cloud backups 
