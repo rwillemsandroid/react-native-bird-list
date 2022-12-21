@@ -33,6 +33,7 @@ Each walk has a list of birds.
 
 - verify content fits bottomsheet on smaller devices
 - add persistent storage (Realm? SQL?)
+- tests 
 
 ## Wishlist
 
